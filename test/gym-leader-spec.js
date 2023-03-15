@@ -137,5 +137,6 @@ describe("The GymLeader module file", () => {
         ).to.be.true;      
       });
     });
-  
   });
+
+// Credit goes to Brad Simpson for originally making the Dragons practice with specs. I borrowed it to make extra practice :) 
