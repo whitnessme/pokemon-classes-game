@@ -68,3 +68,5 @@ class Pokemon {
 
 let pikachu = new Pokemon("Pikachu", "Electric", 25, 10, "Male");
 // console.log(Pokemon.getPokemonStats(pikachu))
+
+module.exports = Pokemon;
