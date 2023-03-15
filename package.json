@@ -1,0 +1,17 @@
+{
+    "name": "pokemon-classes-game",
+    "description": "eod for Week 4 with Whit",
+    "directories": {
+      "test": "test"
+    },
+    "scripts": {
+      "test": "mocha"
+    },
+    "dependencies": {
+      "chai": "^4.3.7",
+      "chai-spies": "^1.0.0",
+      "mocha": "^10.2.0",
+      "sinon": "^15.0.2"
+    }
+  }
+  
