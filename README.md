@@ -40,3 +40,9 @@ We want to make two main classes, one for trainers and one for pokemon. Then ext
 	- Properties to Add
 		- Commentary during battle
 		- GymBadge
+
+
+		-----
+- PokeBattle
+	Properties:
+		-

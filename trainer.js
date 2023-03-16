@@ -30,6 +30,8 @@ class Trainer {
         }
     }
 
+    // Need a add to team instance method
+
     static getHighestBadgeTrainer(...trainers) {
         trainers.reduce((acc, trainer) => {
             if (trainer.badges.length > acc.mostBadgesSoFar) {
