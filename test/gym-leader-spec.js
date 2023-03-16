@@ -13,12 +13,14 @@ const filePath = path.resolve(__dirname, phaseModulePath);
 const fileContainsClassResult = fileContainsClass(filePath, "GymLeader");
 
 describe("The GymLeader module file", () => {
+  // module.exports = GymLeader
     it("does not export null or undefined", () => {
       expect(GymLeader).to.not.be.null;
       expect(GymLeader).to.not.deep.equal(undefined);
     });
   
     if (GymLeader !== null) {
+      // Is it Gymleader? Is it a class
       it("and references the `GymLeader` class", () => {
         expect(fileContainsClassResult).to.be.true;
       });
@@ -88,7 +90,7 @@ describe("The GymLeader module file", () => {
         it("initializes the `inventory` property from the provided argument value", () => {
           expect(instance.inventory.hyperPotion).to.equal(2);
           expect(instance.inventory.pokeball).to.equal(undefined);
-          expect(Object.keys(instance.inventory).length).to.equal(1);
+          expect(Object.keys(instance.inventory).length).to.equal(2);
         });
   
         it("initializes the `badges` property from the provided argument value", () => {

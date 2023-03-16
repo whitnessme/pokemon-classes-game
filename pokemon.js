@@ -17,27 +17,31 @@ class Pokemon {
         const chance = Math.floor(Math.random() * this.hp)
         if (chance > this.hp / 2) {
             // Successful Catch
-            const userInput = readline.createInterface({
-                input: process.stdin,
-                output: process.stdout
-              });
-            console.log(this.name + " was caught.")
-            userInput.question(`Would you like to nickname this ${this.name}? Yes or No?`, answer => {
-                if (answer.toLowerCase() === "yes" || answer.toLowerCase() === "y") {
-                    userInput.question(`Please type ${this.name}'s nickname.`, answer => {
-                        this.nickname = answer
-                        console.log(this.nickname)
-                        console.log(`Congrats! Your ${this.name} is named ${this.nickname}!`)
-
+            const runCatch = async function() {
+                const userInput = readline.createInterface({
+                    input: process.stdin,
+                    output: process.stdout
+                });
+                console.log(this.name + " was caught.")
+                await new Promise(resolve => {
+                    userInput.question(`Would you like to nickname this ${this.name}? Yes or No?`, answer => {
+                    if (answer.toLowerCase() === "yes" || answer.toLowerCase() === "y") {
+                        userInput.question(`Please type ${this.name}'s nickname.`, answer => {
+                            this.nickname = answer
+                            console.log(this.nickname)
+                            console.log(`Congrats! Your ${this.name} is named ${this.nickname}!`)
+                            
+                            userInput.close()
+                        })
+                    } else {
+                        // No to nickname 
+                        console.log(`${this.name} is now in your team.`)
                         userInput.close()
-                    })
-                } else {
-                    // No to nickname 
-                    console.log(`${this.name} is now in your team.`)
-                    userInput.close()
-                }
-            })
-            return true;
+                    }
+                })})
+                return true;
+            }
+            return runCatch.bind(this)
         } else {
             // Unsuccessful Catch
             console.log(this.name + " was not caught!")
@@ -67,6 +71,7 @@ class Pokemon {
 // name, type, number, level, gender
 
 let pikachu = new Pokemon("Pikachu", "Electric", 25, 10, "Male");
+pikachu.gettingCaught();
 // console.log(Pokemon.getPokemonStats(pikachu))
 
 module.exports = Pokemon;

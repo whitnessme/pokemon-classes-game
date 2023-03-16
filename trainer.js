@@ -16,6 +16,7 @@ class Trainer {
             const result = pokemon.gettingCaught();
             if (result) {
                 const name = pokemon.getNickname();
+                // Maybe we want the key to be the order they're in. 
                 this.team[name] = pokemon
                 const numOfTeam = Object.keys(this.team).length
                 console.log(`You now have ${numOfTeam} Pokemon in your team now!`)
@@ -27,6 +28,14 @@ class Trainer {
             console.log("You are out of Pokeballs!")
             return;
         }
+    }
+
+    static getHighestBadgeTrainer(...trainers) {
+        trainers.reduce((acc, trainer) => {
+            if (trainer.badges.length > acc.mostBadgesSoFar) {
+                return {"highestTrainer": trainer, "mostBadgesSoFar": trainer.badges.length}
+            } else return acc
+        }, {"highestTrainer": trainers[0], "mostBadgesSoFar": trainers[0].badges.length})
     }
 }
 

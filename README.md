@@ -36,3 +36,7 @@ We want to make two main classes, one for trainers and one for pokemon. Then ext
 		 - badgesGiven
 	- Methods
 		- getTeamNames
+
+	- Properties to Add
+		- Commentary during battle
+		- GymBadge
