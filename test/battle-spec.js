@@ -16,23 +16,23 @@ describe ('PokeBattle', () => {
     // Create two pokemon and a battle before each test
     trainer = new Trainer("Whit", 29)
     poke1 = new Pokemon("Absol", "Dark", Infinity, 99, "male");
-    poke2 = new Pokémon("Typhlosion", "Fire", 157, 66, "Male");
+    poke2 = new Pokemon("Typhlosion", "Fire", 157, 66, "Male");
     // Need to make addToTeam instance method on Trainer to make these test specs work
     trainer.addToTeam(poke1, poke2)
     battle = new PokeBattle(trainer, "Encounter", "Grasslands", "Wild Pidgey");
   });
 
   describe("PokeBattle should be a class that...", () => {
-    it('should set a `initiator` attribute on creation', () => {
+    it('should set an `initiator` attribute on creation', () => {
       expect(battle.initiator).to.equal(trainer);
     });
     it('should set a `type` attribute on creation', () => {
       expect(battle.type).to.equal("Encounter");
     });
-    it('should set a favorite `environment` attribute on creation', () => {
+    it('should set an `environment` attribute on creation', () => {
       expect(battle.environment).to.equal("Grasslands")
     });
-    it('should set a `opponent` attribute on creation', () => {
+    it('should set an `opponent` attribute on creation', () => {
       expect(battle.opponent).to.equal("Wild Pidgey")
     });
     it('should set a `turns` attribute on creation with a default value of 0', () => {
@@ -49,19 +49,21 @@ describe ('PokeBattle', () => {
   describe("PokeBattle should have a `fight` method", () => {
     it("that returns a string about the trainer's first pokemon hitting the opponent", () => {
       let result = battle.fight();
-      expect(result).to.equal("Absol hit Wild Pidgey.");
+      expect(result).to.equal("Absol hit Wild Pidgey."); // return string interpolation 
     });
     it("should increment the turn counter by 1", () => {
-      expect(battle.turns).to.equal(1);
+      battle.fight()
+      expect(battle.turns).to.equal(1); // this.turns++
     });
   });
 
   describe("PokeBattle should have a `switchPokemon` method", () => {
     it("that accepts a Pokemon's name to switch the `fighter` attribute to" , () => {
       battle.switchPokemon("Typhlosion")
-      expect(battle.fighter).to.equal(poke2);
+      expect(battle.fighter).to.equal(poke2); // this.initiator.team loop then change this.fighter 
     });
     it("should increment the turn counter by 1", () => {
+      battle.switchPokemon();
       expect(battle.turns).to.equal(1);
     });
   });

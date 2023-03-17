@@ -6,7 +6,13 @@ class Trainer {
         this.age = age;
         this.badges = [];
         this.inventory = {...inventory, "pokeball": 10, "potion": 10};
-        this.team = {}; // key is Pokemon's name and value is the pokemon's instance
+        this.team = []; // key is Pokemon's name and value is the pokemon's instance
+    }
+
+    addToTeam(...pokemon) {
+        pokemon.forEach((p) => {
+            this.team.push(p)
+        })
     }
 
     attemptToCatch(pokemon) {
@@ -15,9 +21,10 @@ class Trainer {
             this.inventory.pokeball--
             const result = pokemon.gettingCaught();
             if (result) {
-                const name = pokemon.getNickname();
+                // const name = pokemon.getNickname();
                 // Maybe we want the key to be the order they're in. 
-                this.team[name] = pokemon
+                // this.team[name] = pokemon
+                this.addToTeam(pokemon)
                 const numOfTeam = Object.keys(this.team).length
                 console.log(`You now have ${numOfTeam} Pokemon in your team now!`)
                 return "Catch successful"
